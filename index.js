@@ -56,22 +56,73 @@ alert("hello word")
       console.log(total.toString())
   
       // 5. Sort the inventors by years lived
-  
+     let hachmi = inventors.sort((a,b) =>(a.passed - a.year) - (b.passed - b.year))
+      console.table(hachmi)
+     
+
+    let sortedByYear = inventors.map((inventor)=>{
+      let yearLived = inventor.passed - inventor.year
+      return {
+        firstName : inventor.first,
+        lastName : inventor.last,
+        yearLived : yearLived
+      }
+    })
+    console.table(sortedByYear)
+
+
       // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
       // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-      Boulevard de l Amiral-Bruix - Boulevard de la Chapelle - Boulevard de Clichy - Boulevard de Hôpital - Boulevard de la Madeleine - Boulevard de Magenta - Boulevard de Sébastopol
-      Boulevard de Strasbourg - Boulevard de la Zone 
+      const col = document.querySelectorAll(".mw-category-group a[title]")
+
+      let arr  = []
+      for (let c of col ){
+        arr.push(c.innerText)
+      }
+      let result = []
+
+      const boulvards =  ['Boulevards of Paris', 'City walls of Paris', 'Thiers wall', 'Wall of Charles V',
+      'Wall of Philip II Augustus', 'City gates of Paris', "Haussmann's renovation of Paris",
+       'Boulevards of the Marshals', 'Boulevard Auguste-Blanqui', 'Boulevard Barbès',
+        'Boulevard Beaumarchais', "Boulevard de l'Amiral-Bruix", 'Boulevard Mortier', 'Boulevard Poniatowski',
+        'Boulevard Soult', 'Boulevard des Capucines', 'Boulevard de la Chapelle',
+        'Boulevard de Clichy', 'Boulevard du Crime', "Boulevard du Général-d'Armée-Jean-Simon",
+         'Boulevard Haussmann', "Boulevard de l'Hôpital", 'Boulevard des Italiens', 'Boulevard Lefebvre',
+      'Boulevard de la Madeleine', 'Boulevard de Magenta', 'Boulevard Malesherbes',
+       'Boulevard Marguerite-de-Rochechouart', 'Boulevard Montmartre', 'Boulevard du Montparnasse',
+        'Boulevard Raspail', 'Boulevard Richard-Lenoir', 'Boulevard Saint-Germain',
+         'Boulevard Saint-Michel', 'Boulevard de Sébastopol', 'Boulevard de Strasbourg',
+          'Boulevard du Temple', 'Boulevard Voltaire', 'Boulevard de la Zone']
+        // for(let boulvard of boulvards){
+
+      //   if(boulvard.includes('de ')){
+      //       result.push(boulvard)
+      //   }
+      // }
+      let filtredBoulvards = boulvards.filter((boulvard)=> boulvard.includes("de "))
+      console.log(filtredBoulvards)
+      console.log(result)
 
   
   
       // 7. sort Exercise
       // Sort the people alphabetically by last name
-      let laarbi = inventors.sort((a,b) => a.first - b.last)
-      console.table(laarbi)
+    
   
       // 8. Reduce Exercise
       // Sum up the instances of each of these
       const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+      let obj = {}
+      for (let i = 0; i < data.length; i++)
+      if(obj[data[i]] == undefined){
+        obj[data[i]] = 1
+      }else{
+        obj[data[i]]++
+        
+      }
+      console.table(obj)
+      
+
 
 
